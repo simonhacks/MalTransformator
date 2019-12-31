@@ -50,6 +50,14 @@ public class Asset {
         this.parent = parent;
     }
 
+    public void merge(Asset other) {
+        this.category = other.category;
+        this.attacks = other.attacks;
+        this.defenses = other.defenses;
+        this.name = other.name;
+        this.parent = other.parent;
+    }
+
     public String getIdentifier() {
         return getName();
     }
