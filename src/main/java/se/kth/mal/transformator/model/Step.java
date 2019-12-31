@@ -28,4 +28,8 @@ public abstract class Step {
     public void setAsset(Asset asset) {
         this.asset = asset;
     }
+
+    public String getIdentifier() {
+        return this.getAsset() + "." + this.getName();
+    }
 }
