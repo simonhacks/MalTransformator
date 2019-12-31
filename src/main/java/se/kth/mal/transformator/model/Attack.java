@@ -3,7 +3,7 @@ package se.kth.mal.transformator.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Attack {
+public class Attack extends Step {
     private List<Attack> relatedAttacks = new ArrayList<Attack>();
     private AttackType type;
 
