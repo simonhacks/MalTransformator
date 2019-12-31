@@ -22,4 +22,8 @@ public class Category {
     public void setAssets(List<Asset> assets) {
         this.assets = assets;
     }
+
+    public String getIdentifier() {
+        return getName();
+    }
 }

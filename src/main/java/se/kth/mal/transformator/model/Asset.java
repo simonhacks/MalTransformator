@@ -49,4 +49,8 @@ public class Asset {
     public void setParent(Asset parent) {
         this.parent = parent;
     }
+
+    public String getIdentifier() {
+        return getName();
+    }
 }
