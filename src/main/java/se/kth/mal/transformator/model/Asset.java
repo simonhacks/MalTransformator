@@ -52,8 +52,8 @@ public class Asset {
 
     public void merge(Asset other) {
         this.category = other.category;
-        this.attacks = other.attacks;
-        this.defenses = other.defenses;
+        this.attacks.addAll(other.attacks);
+        this.defenses.addAll(other.defenses);
         this.name = other.name;
         this.parent = other.parent;
     }

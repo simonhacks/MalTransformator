@@ -22,4 +22,12 @@ public class Attack extends Step {
     public void setType(AttackType type) {
         this.type = type;
     }
+
+    public void merge(Attack other) {
+        this.setProbability(other.getProbability());
+        this.setName(other.getName());
+        this.setAsset(other.getAsset());
+        this.getRelatedAttacks().addAll(other.getRelatedAttacks());
+        this.setType(other.getType());
+    }
 }
