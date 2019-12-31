@@ -8,6 +8,7 @@ public class Asset {
     private List<Attack> attacks = new ArrayList<Attack>();
     private List<Defense> defenses = new ArrayList<Defense>();
     private String name;
+    private Asset parent;
 
     public Category getCategory() {
         return category;
@@ -39,5 +40,13 @@ public class Asset {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Asset getParent() {
+        return parent;
+    }
+
+    public void setParent(Asset parent) {
+        this.parent = parent;
     }
 }
