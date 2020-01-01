@@ -3,6 +3,7 @@ package se.kth.mal.transformator.builder;
 import se.kth.mal.transformator.model.Asset;
 import se.kth.mal.transformator.model.Attack;
 import se.kth.mal.transformator.model.Category;
+import se.kth.mal.transformator.model.Defense;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,12 +13,13 @@ public class AssetBuilder {
     private HashMap<String, Asset> assets = new HashMap<String, Asset>();
     private CategoryBuilder categoryBuilder = new CategoryBuilder();
     private AttackBuilder attackBuilder = new AttackBuilder();
+    private DefenseBuilder defenseBuilder = new DefenseBuilder();
 
     public Asset getAsset(String name) {
-        return getAsset("", name, new ArrayList<AttackDescription>());
+        return getAsset("", name, new ArrayList<AttackDescription>(), new ArrayList<DefenseDescription>());
     }
 
-    public Asset getAsset(String category, String name, List<AttackDescription> attacks) {
+    public Asset getAsset(String category, String name, List<AttackDescription> attacks, List<DefenseDescription> defenses) {
         Asset newAsset = new Asset();
 
         newAsset.setName(name);
@@ -28,12 +30,22 @@ public class AssetBuilder {
         for (AttackDescription description : attacks) {
             Attack attack = attackBuilder.getAttack(
                     newAsset,
-                    description.name,
-                    description.probability,
-                    getAsset(description.targetAsset),
-                    description.targetAttack
+                    description.getName(),
+                    description.getProbability(),
+                    getAsset(description.getTargetAsset()),
+                    description.getTargetAttack()
             );
             newAsset.getAttacks().add(attack);
+        }
+
+        for (DefenseDescription description : defenses) {
+            Defense defense = defenseBuilder.getDefense(
+                    newAsset,
+                    description.getName(),
+                    description.getProbability(),
+                    attackBuilder.getAttack(getAsset(description.getTargetAsset()), description.getTargetAttack())
+            );
+            newAsset.getDefenses().add(defense);
         }
 
         if (assets.containsKey(newAsset.getIdentifier())) {

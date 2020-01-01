@@ -13,4 +13,11 @@ public class Defense extends Step {
     public void setCoveredAttacks(List<Attack> coveredAttacks) {
         this.coveredAttacks = coveredAttacks;
     }
+
+    public void merge(Defense other) {
+        this.setProbability(other.getProbability());
+        this.setName(other.getName());
+        this.setAsset(other.getAsset());
+        this.getCoveredAttacks().addAll(other.getCoveredAttacks());
+    }
 }
