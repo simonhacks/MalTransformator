@@ -27,4 +27,8 @@ public class DefenseBuilder {
 
         return newDefense;
     }
+
+    public HashMap<String, Defense> getDefenses() {
+        return defenses;
+    }
 }

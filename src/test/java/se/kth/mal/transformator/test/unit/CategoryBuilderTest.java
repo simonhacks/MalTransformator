@@ -31,9 +31,9 @@ public class CategoryBuilderTest {
 
     @Test
     public void testGetCategory_Exists() {
-        Category receivedCategory = categoryBuilder.getCategory(testCategoryName);
+        Category receivedCategory = categoryBuilder.getCategory(testCategory.getIdentifier());
 
-        assertSame(receivedCategory, testCategory);
+        assertSame(testCategory, receivedCategory);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class CategoryBuilderTest {
         String dummyCategory = "dummyCategory";
         Category receivedCategory = categoryBuilder.getCategory(dummyCategory);
 
-        assertNotSame(receivedCategory, testCategory);
-        assertEquals(receivedCategory.getName(), dummyCategory);
+        assertNotSame(testCategory, receivedCategory);
+        assertEquals(dummyCategory, receivedCategory.getName());
     }
 }
