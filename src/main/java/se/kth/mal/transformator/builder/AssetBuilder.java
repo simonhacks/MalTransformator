@@ -20,6 +20,10 @@ public class AssetBuilder {
     }
 
     public Asset getAsset(String category, String name, List<AttackDescription> attacks, List<DefenseDescription> defenses) {
+        if (attacks == null || defenses == null) {
+            throw new IllegalArgumentException("Parameters are not allowed to be null.");
+        }
+
         Asset newAsset = new Asset();
 
         newAsset.setName(name);

@@ -19,7 +19,7 @@ public class AttackBuilder {
         newAttack.setAsset(parentAsset);
         newAttack.setName(name);
         newAttack.setProbability(new Probability(probability));
-        if (!targetAttack.equals("")) {
+        if (targetAttack != null && !targetAttack.equals("")) {
             newAttack.getRelatedAttacks().add(getAttack(targetAsset, targetAttack));
         }
 
