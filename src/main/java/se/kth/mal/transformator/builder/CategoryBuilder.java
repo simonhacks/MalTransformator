@@ -20,4 +20,8 @@ public class CategoryBuilder {
 
         return newCategory;
     }
+
+    public HashMap<String, Category> getCategories() {
+        return categories;
+    }
 }
