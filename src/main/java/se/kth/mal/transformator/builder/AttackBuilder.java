@@ -19,7 +19,9 @@ public class AttackBuilder {
         newAttack.setAsset(parentAsset);
         newAttack.setName(name);
         newAttack.setProbability(new Probability(probability));
-        newAttack.getRelatedAttacks().add(getAttack(targetAsset, targetAttack));
+        if (!targetAttack.equals("")) {
+            newAttack.getRelatedAttacks().add(getAttack(targetAsset, targetAttack));
+        }
 
         if (attacks.containsKey(newAttack.getIdentifier())) {
             attacks.get(newAttack.getIdentifier()).merge(newAttack);
@@ -29,5 +31,9 @@ public class AttackBuilder {
         }
 
         return newAttack;
+    }
+
+    public HashMap<String, Attack> getAttacks() {
+        return attacks;
     }
 }
